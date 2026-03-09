@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サービス概要 | StarFace - AI有名人顔診断</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', sans-serif;
+            background: #0f0b1a;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            padding: 24px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            margin: 28px 0 12px;
+            color: #a855f7;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+            padding-bottom: 6px;
+        }
+
+        p,
+        li {
+            font-size: 0.88rem;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        a {
+            color: #a855f7;
+        }
+
+        .provider {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .highlight {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .feature-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>StarFace - AI有名人顔診断</h1>
+    <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">サービス概要</p>
+
+    <h2>サービスについて</h2>
+    <p>「StarFace」は、ユーザーの顔写真をAI（人工知能）で分析し、1,800人以上の有名人データベースから最も似ている人物を判定する、無料のエンターテインメントサービスです。</p>
+    <p>本サービスは、UNIIS公式通販が自社で企画・開発・運営を行っているサービスです。</p>
+
+    <div class="provider">
+        <p><strong>運営者：</strong>UNIIS公式通販<br>
+            <strong>住所：</strong>〒614-8038 京都府八幡市八幡園内63番地の18<br>
+            <strong>連絡先：</strong><a href="mailto:contact@km-studio.top">contact@km-studio.top</a>
+        </p>
+    </div>
+
+    <h2>主な機能</h2>
+    <div class="features">
+        <div class="feature">
+            <div class="feature-icon">📸</div>
+            <div class="feature-label">写真1枚で診断</div>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🤖</div>
+            <div class="feature-label">AI顔認識</div>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🌟</div>
+            <div class="feature-label">1,800人以上</div>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-label">写真即時削除</div>
+        </div>
+    </div>
+
+    <h2>プライバシーへの取り組み</h2>
+    <div class="highlight">
+        <p>✅ アップロードされた写真は<strong>サーバーのメモリ上でのみ処理</strong>されます。</p>
+        <p>✅ AI診断完了後、写真は<strong>即座に完全削除</strong>されます。</p>
+        <p>✅ ディスクへの保存は<strong>一切行いません</strong>。</p>
+        <p>✅ 写真データを第三者に提供・共有することはありません。</p>
+    </div>
+
+    <h2>利用料金</h2>
+    <p>本サービスは<strong>完全無料</strong>でご利用いただけます。会員登録・ログイン・課金機能はありません。</p>
+
+    <h2>技術情報</h2>
+    <ul>
+        <li><strong>AIモデル：</strong>SFace（OpenCV DNNベース）</li>
+        <li><strong>データベース：</strong>ハリウッドスター、日本の俳優・女優・アイドル・芸人・スポーツ選手、K-POP、IT長者など1,800人以上</li>
+        <li><strong>照合方式：</strong>コサイン類似度による特徴量ベクトル比較</li>
+    </ul>
+
+    <h2>リンク</h2>
+    <ul>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="terms.html">サービス利用規約</a></li>
+    </ul>
+</body>
+
+</html>
