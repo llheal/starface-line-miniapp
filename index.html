@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>スターフェイス — AI有名人顔診断 | StarFace Celebrity Lookalike</title>
+    <meta name="description"
+        content="写真1枚でAIがあなたに似ている有名人を診断！ハリウッドスター・日本の俳優・アイドル・K-POPなど1,800人以上のデータベースから類似度を判定。完全無料・写真は即削除で安心。">
+    <meta name="keywords" content="AI顔診断,有名人診断,似ている芸能人,そっくりさん,Celebrity Lookalike,Face Match,StarFace,スターフェイス">
+    <meta property="og:title" content="スターフェイス — AI有名人顔診断">
+    <meta property="og:description" content="あなたに似ている有名人をAIが瞬時に診断！1,800人以上のスターから類似度判定。完全無料。">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- LIFF SDK -->
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ============================================ -->
+    <!-- SCREEN 1: HOME / LANDING                     -->
+    <!-- ============================================ -->
+    <div id="screen-home" class="screen active">
+        <div class="home-container">
+            <!-- Floating particles background -->
+            <div class="particles" id="particles"></div>
+
+            <!-- Logo area -->
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 80 80" fill="none">
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="80" y2="80">
+                                <stop offset="0%" stop-color="#a855f7" />
+                                <stop offset="100%" stop-color="#ec4899" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="40" cy="28" r="14" stroke="url(#logoGrad)" stroke-width="3" fill="none" />
+                        <path d="M16 62 C16 46 64 46 64 62" stroke="url(#logoGrad)" stroke-width="3" fill="none"
+                            stroke-linecap="round" />
+                        <circle cx="58" cy="22" r="5" fill="#ec4899" opacity="0.8" />
+                        <path d="M55 22 L58 19 L61 22 L58 25 Z" fill="white" opacity="0.9" />
+                    </svg>
+                </div>
+                <h1 class="app-title">StarFace</h1>
+                <p class="app-subtitle">AI 有名人顔診断</p>
+            </div>
+
+            <!-- Hero description -->
+            <div class="hero-card">
+                <div class="hero-glow"></div>
+                <p class="hero-text">
+                    あなたは誰に似ている？<br>
+                    <span class="highlight">1,800人以上</span>の有名人から<br>
+                    AIが瞬時に判定します
+                </p>
+                <div class="hero-tags">
+                    <span class="tag">🎬 ハリウッドスター</span>
+                    <span class="tag">⚽ スポーツ選手</span>
+                    <span class="tag">🎤 アイドル</span>
+                    <span class="tag">😂 お笑い芸人</span>
+                    <span class="tag">🎵 K-POP</span>
+                    <span class="tag">💻 IT長者</span>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <button id="btn-start" class="btn-primary pulse-animation">
+                <span class="btn-icon">📸</span>
+                <span class="btn-text">診断スタート</span>
+            </button>
+
+            <!-- Privacy badge -->
+            <div class="privacy-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 1L2 4V7.5C2 11.1 4.6 14.4 8 15C11.4 14.4 14 11.1 14 7.5V4L8 1Z" fill="#10b981"
+                        opacity="0.2" />
+                    <path d="M8 1L2 4V7.5C2 11.1 4.6 14.4 8 15C11.4 14.4 14 11.1 14 7.5V4L8 1Z" stroke="#10b981"
+                        stroke-width="1.5" fill="none" />
+                    <path d="M5.5 8L7 9.5L10.5 6" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span>プライバシー保護：お写真は診断直後に自動削除されます</span>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-row">
+                <div class="stat">
+                    <span class="stat-number" id="stat-count">1,800+</span>
+                    <span class="stat-label">有名人</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">AI</span>
+                    <span class="stat-label">顔認識</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">0円</span>
+                    <span class="stat-label">完全無料</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 2: CAMERA / UPLOAD                    -->
+    <!-- ============================================ -->
+    <div id="screen-upload" class="screen">
+        <div class="upload-container">
+            <button id="btn-back" class="btn-back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <h2 class="screen-title">写真をアップロード</h2>
+            <p class="screen-subtitle">正面からの顔写真がベストです</p>
+
+            <!-- Upload area -->
+            <div id="upload-area" class="upload-area">
+                <div class="upload-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <rect x="8" y="14" width="48" height="36" rx="4" stroke="currentColor" stroke-width="2"
+                            opacity="0.4" />
+                        <circle cx="24" cy="28" r="6" stroke="currentColor" stroke-width="2" opacity="0.6" />
+                        <path d="M8 42L22 32L34 40L42 34L56 44" stroke="currentColor" stroke-width="2" opacity="0.4" />
+                        <circle cx="44" cy="24" r="3" fill="currentColor" opacity="0.3" />
+                    </svg>
+                </div>
+                <p class="upload-text">タップして写真を選択</p>
+                <p class="upload-hint">またはドラッグ＆ドロップ</p>
+                <input type="file" id="file-input" accept="image/*" capture="user" hidden>
+            </div>
+
+            <!-- Camera button -->
+            <div class="upload-options">
+                <button id="btn-camera" class="btn-option">
+                    <span>📷</span>
+                    <span>カメラで撮影</span>
+                </button>
+                <button id="btn-gallery" class="btn-option">
+                    <span>🖼️</span>
+                    <span>ギャラリーから</span>
+                </button>
+            </div>
+
+            <!-- Preview -->
+            <div id="preview-section" class="preview-section hidden">
+                <div class="preview-wrapper">
+                    <img id="preview-image" class="preview-image" alt="プレビュー">
+                    <button id="btn-remove" class="btn-remove">✕</button>
+                </div>
+                <button id="btn-analyze" class="btn-primary">
+                    <span class="btn-icon">🔍</span>
+                    <span class="btn-text">AI診断を開始</span>
+                </button>
+            </div>
+
+            <!-- Privacy note -->
+            <div class="privacy-note">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 1L2 4V7.5C2 11.1 4.6 14.4 8 15C11.4 14.4 14 11.1 14 7.5V4L8 1Z" stroke="#10b981"
+                        stroke-width="1.5" fill="none" />
+                    <path d="M5.5 8L7 9.5L10.5 6" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span>お写真は診断直後にサーバーから完全削除されます</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 3: LOADING / ANALYZING                -->
+    <!-- ============================================ -->
+    <div id="screen-loading" class="screen">
+        <div class="loading-container">
+            <div class="loading-animation">
+                <div class="scan-circle">
+                    <div class="scan-line"></div>
+                </div>
+                <div class="loading-face-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="20" r="10" stroke="white" stroke-width="2" />
+                        <path d="M8 42C8 34 16 28 24 28C32 28 40 34 40 42" stroke="white" stroke-width="2"
+                            fill="none" />
+                    </svg>
+                </div>
+            </div>
+            <h2 class="loading-title">AI が分析中...</h2>
+            <p class="loading-subtitle">1,000人以上の有名人と比較しています</p>
+            <div class="loading-steps">
+                <div class="step active" id="step-1">
+                    <div class="step-dot"></div>
+                    <span>顔を検出中</span>
+                </div>
+                <div class="step" id="step-2">
+                    <div class="step-dot"></div>
+                    <span>特徴量を抽出中</span>
+                </div>
+                <div class="step" id="step-3">
+                    <div class="step-dot"></div>
+                    <span>データベースと照合中</span>
+                </div>
+                <div class="step" id="step-4">
+                    <div class="step-dot"></div>
+                    <span>結果を生成中</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 4: RESULTS                            -->
+    <!-- ============================================ -->
+    <div id="screen-results" class="screen">
+        <div class="results-container">
+            <h2 class="results-title">診断結果</h2>
+
+            <!-- Top match -->
+            <div id="top-match" class="top-match-card">
+                <div class="match-glow"></div>
+                <div class="match-badge">🏆 最も似ている有名人</div>
+                <div class="match-content">
+                    <div class="match-images">
+                        <div class="match-image-wrapper user-img-wrapper">
+                            <img id="result-user-img" class="match-image" alt="あなた">
+                            <span class="match-label">あなた</span>
+                        </div>
+                        <div class="match-vs">
+                            <div class="vs-circle">VS</div>
+                        </div>
+                        <div class="match-image-wrapper celeb-img-wrapper">
+                            <img id="result-celeb-img" class="match-image" alt="有名人">
+                            <span class="match-label" id="result-celeb-name">—</span>
+                        </div>
+                    </div>
+                    <div class="similarity-display">
+                        <div class="similarity-number" id="result-similarity">0</div>
+                        <div class="similarity-label">類似度</div>
+                        <div class="similarity-bar-wrapper">
+                            <div class="similarity-bar" id="result-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other matches -->
+            <div class="other-matches">
+                <h3 class="section-title">似ている有名人 TOP 5</h3>
+                <div id="match-list" class="match-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="result-actions">
+                <button id="btn-share" class="btn-primary btn-share">
+                    <span class="btn-icon">📤</span>
+                    <span class="btn-text">結果をシェア</span>
+                </button>
+                <button id="btn-retry" class="btn-secondary">
+                    <span>🔄</span>
+                    <span>もう一度診断する</span>
+                </button>
+            </div>
+
+            <!-- Privacy confirmation -->
+            <div class="privacy-confirmed">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="7" stroke="#10b981" stroke-width="1.5" fill="#10b981" fill-opacity="0.1" />
+                    <path d="M5 8L7 10L11 6" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span>お写真はサーバーから完全に削除されました</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ERROR MODAL                                  -->
+    <!-- ============================================ -->
+    <div id="error-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-icon">⚠️</div>
+            <h3 id="error-title">エラー</h3>
+            <p id="error-message">予期しないエラーが発生しました。</p>
+            <button id="btn-error-close" class="btn-primary btn-small">OK</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
