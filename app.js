@@ -9,7 +9,7 @@
 const CONFIG = {
     // Replace with your actual LIFF ID from LINE Developers Console
     LIFF_ID: '2009372248-15peGyA9',
-    API_BASE: window.location.origin,
+    API_BASE: 'https://starface.km-studio.top',
     MAX_FILE_SIZE: 10 * 1024 * 1024, // 10MB
 };
 
