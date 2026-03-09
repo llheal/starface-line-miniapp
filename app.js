@@ -399,8 +399,8 @@ function createPlaceholderImage(name) {
 async function shareResult() {
     const topName = elements.resultCelebName.textContent;
     const similarity = elements.resultSimilarity.textContent;
-    const shareText = `🌟 StarFace AI有名人顔診断の結果！\n\n私に最も似ている有名人は「${topName}」（類似度${similarity}%）でした！\n\n1,800人以上の有名人から診断👇`;
-    const shareUrl = window.location.href;
+    const shareText = `🌟 StarFace AI有名人顔診断の結果！\n\n私に最も似ている有名人は「${topName}」（類似度${similarity}%）でした！\n\n1万人以上の有名人から診断👇`;
+    const shareUrl = 'https://miniapp.line.me/2009372248-15peGyA9';
 
     // Level 1: shareTargetPicker (LIFF)
     if (state.liffInitialized && liff.isApiAvailable('shareTargetPicker')) {
